@@ -2,6 +2,9 @@
 
 require 'ez_diagram'
 
+ENTITIES = Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support/entities', '**', '*.rb'))]
+ENTITIES.each { |file| require file }
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
