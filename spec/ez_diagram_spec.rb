@@ -14,8 +14,8 @@ RSpec.describe EzDiagram do
     it 'should associate using has_one in the class Person with DriverLicense' do
       Person.has_one DriverLicense
       expect(Person.class_variable_get('@@associations')).to eq({ has_one: [DriverLicense],
-                                                                  has_many: [],
-                                                                  belongs_to: [] })
+                                                                  has_many: []
+                                                                })
     end
   end
 
@@ -27,8 +27,16 @@ RSpec.describe EzDiagram do
     it 'should associate using has_one in the class Person with DriverLicense' do
       Person.has_many Address
       expect(Person.class_variable_get('@@associations')).to eq({ has_one: [],
-                                                                  has_many: [Address],
-                                                                  belongs_to: [] })
+                                                                  has_many: [Address]
+                                                                })
+    end
+  end
+
+  context '.generate_dot_file' do
+    it 'should return proper dot file' do
+      Person.has_one DriverLicense
+      Person.has_many Address
+      Person.generate_dot_file
     end
   end
 end
