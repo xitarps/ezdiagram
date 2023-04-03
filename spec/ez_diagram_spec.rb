@@ -23,7 +23,7 @@ RSpec.describe EzDiagram do
     let!(:address_sp) { Address.new(number: '1618', street: 'Beco diagonal', person:) }
     let!(:address_rj) { Address.new(number: '2718', street: 'Elm', person:) }
 
-    it 'should associate using has_many in the class Person with DriverLicense' do
+    it 'should associate using has_many in the class Person with Address' do
       Person.has_many Address
       expect(Person.class_variable_get('@@associations')).to eq({ has_one: [],
                                                                   has_many: [Address] })
