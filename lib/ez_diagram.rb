@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 require_relative 'ez_diagram/version'
+require 'ruby-graphviz'
 
 module EzDiagram
   class Error < StandardError; end
@@ -43,6 +44,11 @@ module EzDiagram
     dig_entity_recursively(entity)
 
     $dot_file << ' }'
+
+    # `dot -Tpng spec/fixtures/person_class_diagram.dot > output.png`
+    GraphViz.parse_string($dot_file).output(png: "#{self}.png")
+
+    $dot_file
   end
 
   private

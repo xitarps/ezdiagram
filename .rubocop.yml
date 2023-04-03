@@ -61,6 +61,9 @@ Lint/NoReturnInBeginEndBlocks: # new in 1.2
   Enabled: true
 Lint/NonAtomicFileOperation: # new in 1.31
   Enabled: true
+  Exclude:
+   - 'spec/*.rb'
+   - 'lib/*.rb'
 Lint/NumberedParameterAssignment: # new in 1.9
   Enabled: true
 Lint/OrAssignmentToConstant: # new in 1.9

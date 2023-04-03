@@ -32,11 +32,22 @@ RSpec.describe EzDiagram do
 
   context '.generate_dot_file' do
     it 'should return proper dot file' do
+      File.delete('Person.png') if File.exist?('Person.png')
       test_proof_dot_file = File.read('spec/fixtures/person_class_diagram.dot')
       load 'support/entities/person.rb'
+
       ez_diagram_dot_file = Person.generate_dot_file
 
       expect(ez_diagram_dot_file).to eq(test_proof_dot_file)
+    end
+
+    it 'should create Person.png file' do
+      File.delete('Person.png') if File.exist?('Person.png')
+      load 'support/entities/person.rb'
+
+      Person.generate_dot_file
+
+      expect(Dir['*'].include?('Person.png')).to be_truthy
     end
   end
 end
