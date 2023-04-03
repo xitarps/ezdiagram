@@ -113,6 +113,7 @@ Style/ClassVars:
   Enabled: true
   Exclude:
    - 'lib/ez_diagram.rb'
+   - 'spec/ez_diagram_spec.rb'
 Style/DirEmpty: # new in 1.48
   Enabled: true
 Style/Documentation:
