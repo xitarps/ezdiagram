@@ -12,9 +12,7 @@ class Person < BaseClass
     @addresses = []
   end
 
-  private
-
   def self.to_h(person)
-    {name: person.name, driver_license_number: person.driver_license_number.number}
+    { name: person.name, driver_license_number: person.driver_license_number.number }
   end
 end
