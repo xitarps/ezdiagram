@@ -14,3 +14,5 @@ gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 1.21'
 
 gem 'ruby-graphviz', '~> 1.2.5'
+
+gem 'activesupport', '~> 7.0.4.3'

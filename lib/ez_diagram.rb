@@ -2,6 +2,7 @@
 
 require_relative 'ez_diagram/version'
 require 'ruby-graphviz'
+require 'active_support/core_ext/string'
 
 module EzDiagram
   class Error < StandardError; end
@@ -46,7 +47,7 @@ module EzDiagram
     $dot_file << ' }'
 
     # `dot -Tpng spec/fixtures/person_class_diagram.dot > output.png`
-    GraphViz.parse_string($dot_file).output(png: "#{self}.png")
+    GraphViz.parse_string($dot_file).output(png: "#{self.to_s.underscore}_diagram.png")
 
     $dot_file
   end
