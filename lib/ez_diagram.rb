@@ -46,7 +46,6 @@ module EzDiagram
 
     $dot_file << ' }'
 
-    # `dot -Tpng spec/fixtures/person_class_diagram.dot > output.png`
     GraphViz.parse_string($dot_file).output(png: "#{to_s.underscore}_diagram.png")
 
     $dot_file
@@ -59,11 +58,9 @@ module EzDiagram
 
     return unless entity.class_variable_defined?('@@associations')
 
-    # gerar ligação as filhas se tiver
     entity_associations = entity.class_variable_get('@@associations')
     keys.each { |key| entity_associations[key].each { |sub_entity| create_relation(entity, sub_entity, key) } }
 
-    # entity.class_variable_get('@@associations')
     keys.each { |key| entity_associations[key].each { |sub_entity| generate_entity_recursively(sub_entity) } }
   end
 
