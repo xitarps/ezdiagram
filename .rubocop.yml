@@ -9,10 +9,13 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+  Exclude:
+   - 'lib/*.rb'
 
 Layout/LineLength:
   Max: 120
-
+  Exclude:
+   - 'lib/ez_diagram.rb'
 # Custom
 
 Gemspec/DeprecatedAttributeAssignment: # new in 1.30
@@ -165,6 +168,10 @@ Style/HashConversion: # new in 1.10
   Enabled: true
 Style/HashExcept: # new in 1.7
   Enabled: true
+Style/IfUnlessModifier:
+  Enabled: true
+  Exclude:
+   - 'lib/*.rb'
 Style/IfWithBooleanLiteralBranches: # new in 1.9
   Enabled: true
 Style/InPatternThen: # new in 1.16

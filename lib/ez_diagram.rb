@@ -72,31 +72,27 @@ module EzDiagram
   def generate_entity(current_class)
     current_instance_methods = current_class.instance_methods(false)
                                             .map! { |variable| "#{variable.to_s.delete("@")}\\l\\" }
-                                            .sort.join(' ')
     current_instance_variables = current_class.new.instance_variables
                                               .map! { |variable| "#{variable.to_s.delete("@")}\\l\\" }
-                                              .sort.join(' ')
     current_class_methods = (current_class.methods - Object.methods)
                             .map! { |current_method| "#{current_method.to_s.delete("@")}\\l\\" }
-                            .sort.join(' ')
     current_class_variables = current_class.class_variables
                                            .map! { |current_method| "#{current_method.to_s.delete("@")}\\l\\" }
-                                           .sort.join(' ')
     entity_to_text(current_class, current_instance_methods, current_instance_variables,
                    current_class_methods, current_class_variables)
   end
 
   def entity_to_text(current_class, current_instance_methods, current_instance_variables,
                      current_class_methods, current_class_variables)
-    %(
-      "#{current_class}" [shape=record, label="{#{current_class}|\\
-        instance variables:\\n\\ #{current_instance_variables}
-        class variables:\\n\\ #{current_class_variables}
-        instance methods:\\n\\ #{current_instance_methods}
-        class methods:\\n\\ #{current_class_methods}
 
-      }"]
-    )
+    text = %(\n "#{current_class}" [shape=record, label="{#{current_class}|\\ )
+
+    text << "\ninstance variables:\\n\\ #{current_instance_variables.sort.join(' ')}\\l\\ " if current_instance_variables.any?
+    text << "\nclass variables:\\n\\ #{current_class_variables.sort.join(' ')}\\l\\ " if  current_class_variables.any?
+    text << "\ninstance methods:\\n\\ #{current_instance_methods.sort.join(' ')}\\l\\ " if current_instance_methods.any?
+    text << "\nclass methods:\\n\\ #{current_class_methods.sort.join(' ')}\\l\\ " if current_class_methods.any?
+
+    text << %(}"])
   end
 
   def keys
