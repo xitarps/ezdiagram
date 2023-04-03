@@ -42,19 +42,19 @@ module EzDiagram
 
     return unless entity.class_variable_defined?('@@associations')
 
-    dig_entity_recursively(entity)
+    generate_entity_recursively(entity)
 
     $dot_file << ' }'
 
     # `dot -Tpng spec/fixtures/person_class_diagram.dot > output.png`
-    GraphViz.parse_string($dot_file).output(png: "#{self.to_s.underscore}_diagram.png")
+    GraphViz.parse_string($dot_file).output(png: "#{to_s.underscore}_diagram.png")
 
     $dot_file
   end
 
   private
 
-  def dig_entity_recursively(entity)
+  def generate_entity_recursively(entity)
     $dot_file << generate_entity(entity)
 
     return unless entity.class_variable_defined?('@@associations')
@@ -64,7 +64,7 @@ module EzDiagram
     keys.each { |key| entity_associations[key].each { |sub_entity| create_relation(entity, sub_entity, key) } }
 
     # entity.class_variable_get('@@associations')
-    keys.each { |key| entity_associations[key].each { |sub_entity| dig_entity_recursively(sub_entity) } }
+    keys.each { |key| entity_associations[key].each { |sub_entity| generate_entity_recursively(sub_entity) } }
   end
 
   def create_relation(entity, sub_entity, key)
