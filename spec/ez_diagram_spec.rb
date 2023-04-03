@@ -34,8 +34,11 @@ RSpec.describe EzDiagram do
 
   context '.generate_dot_file' do
     it 'should return proper dot file' do
+      test_proof_dot_file = File.open("spec/fixtures/person_class_diagram.dot").read
       load 'support/entities/person.rb'
-      Person.generate_dot_file
+      ez_diagram_dot_file = Person.generate_dot_file
+
+      expect(ez_diagram_dot_file).to eq(test_proof_dot_file)
     end
   end
 end

@@ -43,8 +43,6 @@ module EzDiagram
     dig_entity_recursively(entity)
 
     $dot_file << ' }'
-    
-    binding.irb
   end
 
   private
