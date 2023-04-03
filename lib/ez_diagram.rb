@@ -86,7 +86,7 @@ module EzDiagram
       \"#{current_class}\" [shape=record, label=\"{#{current_class}|\\
         instance variables:\\n\\ #{current_instance_variables}
         class variables:\\n\\ #{current_class_variables}
-        instance moethods:\\n\\ #{current_instance_methods}
+        instance methods:\\n\\ #{current_instance_methods}
         class methods:\\n\\ #{current_class_methods}
 
       }\"]

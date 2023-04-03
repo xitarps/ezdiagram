@@ -4,6 +4,7 @@ class Person < BaseClass
   attr_accessor :name, :driver_license, :addresses
 
   has_one DriverLicense
+  has_one AuthorizedDriver
   has_many Address
 
   def initialize(**args)

@@ -34,8 +34,7 @@ RSpec.describe EzDiagram do
 
   context '.generate_dot_file' do
     it 'should return proper dot file' do
-      Person.has_one DriverLicense
-      Person.has_many Address
+      load 'support/entities/person.rb'
       Person.generate_dot_file
     end
   end
