@@ -29,16 +29,19 @@ then, on the project folder/então na pasta do projeto:
 ```
 ./bin/setup
 ```
+
+*This gem should be cloned in order to use it because it's not public
+*Esta gem deve ser clonada para poder ser usada porque não é pública
 ---
 ## Usage / Uso
 
 Add the gem to your project/Adicione a gema ao seu projeto:
 ```
-require 'ez_diagram'
-
-or/ou
-
 gem 'ez_diagram'
+
+(and/or) / (e/ou)
+
+require 'ez_diagram'
 ```
 
 Insert it's call on the main entity/ Insira sua chamada na entidade principal:
@@ -93,8 +96,13 @@ Bug reports and pull requests are welcome on GitHub at **still to come...**
 Bug reports e pull requests são bem vindos no GitHub em **still to come...**
 
 ---
+## Example / Exemplo:
+<img src = './docs/readme_exmaple.png' />
+<!-- TODO: double check lib upload requirements / rubygems.org
+---
 ## This gem's pendings / pendencias dessa gema:
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+-->
