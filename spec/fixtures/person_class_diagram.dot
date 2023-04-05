@@ -1,18 +1,18 @@
 digraph models_diagram { graph[overlap=false, splines=true] 
  "Person" [shape=record, label="{Person|\ 
-instance variables:\n\ addresses\l\ name\l\\l\ 
-class variables:\n\ associations\l\\l\ 
-instance methods:\n\ addresses=\l\ addresses\l\ driver_license=\l\ driver_license\l\ name=\l\ name\l\\l\ 
-class methods:\n\ generate_dot_file\l\ has_many\l\ has_one\l\ to_h\l\\l\ }"] "Person" -> "DriverLicense" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"] "Person" -> "AuthorizedDriver" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"] "Person" -> "Address" [arrowtail=odot, arrowhead=crow, dir=both, label="has_many"]
+instance variables:\n\ addresses \l\ name \l\  \l\  
+class variables:\n\ associations \l\  \l\  
+instance methods:\n\ addresses \l\ addresses= \l\ driver_license \l\ driver_license= \l\ name \l\ name= \l\  \l\  
+class methods:\n\ generate_dot_file \l\ has_many \l\ has_one \l\ to_h \l\  \l\  }"] "Person" -> "DriverLicense" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"] "Person" -> "AuthorizedDriver" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"] "Person" -> "Address" [arrowtail=odot, arrowhead=crow, dir=both, label="has_many"]
  "DriverLicense" [shape=record, label="{DriverLicense|\ 
-instance variables:\n\ number\l\ person\l\\l\ 
-class variables:\n\ associations\l\\l\ 
-instance methods:\n\ number=\l\ number\l\\l\ 
-class methods:\n\ generate_dot_file\l\ has_many\l\ has_one\l\\l\ }"] "DriverLicense" -> "AuthorizedDriver" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"]
+instance variables:\n\ number \l\ person \l\  \l\  
+class variables:\n\ associations \l\  \l\  
+instance methods:\n\ number \l\ number= \l\  \l\  
+class methods:\n\ generate_dot_file \l\ has_many \l\ has_one \l\  \l\  }"] "DriverLicense" -> "AuthorizedDriver" [arrowtail=odot, arrowhead=crow, dir=both, label="has_one"]
  "AuthorizedDriver" [shape=record, label="{AuthorizedDriver|\ 
-instance methods:\n\ name=\l\ name\l\\l\ }"]
+instance methods:\n\ name \l\ name= \l\  \l\  }"]
  "AuthorizedDriver" [shape=record, label="{AuthorizedDriver|\ 
-instance methods:\n\ name=\l\ name\l\\l\ }"]
+instance methods:\n\ name \l\ name= \l\  \l\  }"]
  "Address" [shape=record, label="{Address|\ 
-instance variables:\n\ number\l\ person\l\ street\l\\l\ 
-instance methods:\n\ number=\l\ number\l\ person\l\ street=\l\ street\l\\l\ }"] }
+instance variables:\n\ number \l\ person \l\ street \l\  \l\  
+instance methods:\n\ number \l\ number= \l\ person \l\ street \l\ street= \l\  \l\  }"] }

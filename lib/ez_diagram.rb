@@ -46,7 +46,9 @@ module EzDiagram
 
     $dot_file << ' }'
 
-    GraphViz.parse_string($dot_file).output(png: "#{to_s.underscore}_diagram.png")
+    file_name = "#{to_s.underscore}_diagram"
+    GraphViz.parse_string($dot_file).output(png: "#{file_name}.png")
+    File.write("#{file_name}.dot", $dot_file, mode: 'w')
 
     $dot_file
   end
@@ -71,13 +73,14 @@ module EzDiagram
 
   def generate_entity(current_class)
     current_instance_methods = current_class.instance_methods(false)
-                                            .map! { |variable| "#{variable.to_s.delete("@")}\\l\\" }
+                                            .map! { |variable| "#{variable.to_s.delete("@")}#{' \l\\ '}" }
     current_instance_variables = current_class.new.instance_variables
-                                              .map! { |variable| "#{variable.to_s.delete("@")}\\l\\" }
+                                              .map! { |variable| "#{variable.to_s.delete("@")}#{' \l\\ '}" }
     current_class_methods = (current_class.methods - Object.methods)
-                            .map! { |current_method| "#{current_method.to_s.delete("@")}\\l\\" }
+                            .map! { |current_method| "#{current_method.to_s.delete("@")}#{' \l\\ '}" }
     current_class_variables = current_class.class_variables
-                                           .map! { |current_method| "#{current_method.to_s.delete("@")}\\l\\" }
+                                           .map! { |current_method| "#{current_method.to_s.delete("@")}#{' \l\\ '}" }
+
     entity_to_text(current_class, current_instance_methods, current_instance_variables,
                    current_class_methods, current_class_variables)
   end
@@ -87,10 +90,10 @@ module EzDiagram
 
     text = %(\n "#{current_class}" [shape=record, label="{#{current_class}|\\ )
 
-    text << "\ninstance variables:\\n\\ #{current_instance_variables.sort.join(' ')}\\l\\ " if current_instance_variables.any?
-    text << "\nclass variables:\\n\\ #{current_class_variables.sort.join(' ')}\\l\\ " if  current_class_variables.any?
-    text << "\ninstance methods:\\n\\ #{current_instance_methods.sort.join(' ')}\\l\\ " if current_instance_methods.any?
-    text << "\nclass methods:\\n\\ #{current_class_methods.sort.join(' ')}\\l\\ " if current_class_methods.any?
+    text << "\ninstance variables:\\n\\ #{current_instance_variables.sort.join}#{' \l\\ '} " if current_instance_variables.any?
+    text << "\nclass variables:\\n\\ #{current_class_variables.sort.join}#{' \l\\ '} " if  current_class_variables.any?
+    text << "\ninstance methods:\\n\\ #{current_instance_methods.sort.join}#{' \l\\ '} " if current_instance_methods.any?
+    text << "\nclass methods:\\n\\ #{current_class_methods.sort.join}#{' \l\\ '} " if current_class_methods.any?
 
     text << %(}"])
   end
