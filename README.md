@@ -31,6 +31,7 @@ then, on the project folder/então na pasta do projeto:
 ```
 
 *This gem should be cloned in order to use it because it's not public
+
 *Esta gem deve ser clonada para poder ser usada porque não é pública
 
 ---
